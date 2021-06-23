@@ -1,0 +1,39 @@
+{
+	"Departments": [
+		{
+			"id": 1,
+			"departmentname": "nephrology",
+			"head": "Dr. A P Kulashekhar",
+			"contactnumber": "9876543210",
+			"hospitalid": 123
+		},
+		{
+			"id": 2,
+			"departmentname": "neurology",
+			"head": "Dr.B Raj Kumar",
+			"contactnumber": "9876543210",
+			"hospitalid": 123
+		},
+		{
+			"id": 3,
+			"departmentname": "cardiology",
+			"head": "Dr. L Sri Devi",
+			"contactnumber": "9876543210",
+			"hospitalid": 123
+		},
+		{
+			"id": 4,
+			"departmentname": "ENT",
+			"head": "Dr. K Ram Prasad",
+			"contactnumber": "9876543210",
+			"hospitalid": 1421
+		},
+		{
+			"id": 5,
+			"departmentname": "opthalmology",
+			"head": "Dr. JSirisha",
+			"contactnumber": "9876543210",
+			"hospitalid": 1421
+		}
+	]
+}

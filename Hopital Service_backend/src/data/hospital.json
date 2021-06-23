@@ -1,0 +1,14 @@
+{
+	"Hospitals": [
+		{
+			"id": 123,
+			"hospitalname": "KIMS",
+			"contactnumber": "9632587410"
+		},
+		{
+			"id": 1421,
+			"hospitalname": "CSI Mission Hospital",
+			"contactnumber": "9685321470"
+		}
+	]
+}
