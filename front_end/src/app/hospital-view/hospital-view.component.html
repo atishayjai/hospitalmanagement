@@ -1,0 +1,52 @@
+<div class="container ">
+	<div class="wrap-header mt-3 mb-5"> Hospital List</div>
+
+	<div class="table-responsive">
+		<button type="button" class="btn btn-success float-left mb-2" (click)="sort()">Sort By Hospital Name</button>
+		<button type="button" class="btn btn-success float-right mb-2" (click)="addHospital()">Add Hospital</button>
+		<table class="table">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col">Hospital Name</th>
+					<th scope="col">Contact No.</th>
+					<th scope="col">Department View</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of hospitalListArray; let i = index">
+					<td *ngIf="!item.isEditable">{{item?.hospitalname}}</td>
+					<td *ngIf="!item.isEditable">{{item?.contactnumber}}</td>
+					<td *ngIf="!item.isEditable"><a [routerLink]="['/department', item.id]">View</a></td>
+					<td *ngIf="!item.isEditable" class="pointer">
+						<fa-icon [icon]="editIcon" (click)="item.isEditable = !item.isEditable" class="pr-1"
+							title="edit"></fa-icon>
+						<fa-icon [icon]="removeIcon" (click)="deleteData(item,i)" title="delete"></fa-icon>
+					</td>
+					<td *ngIf="item.isEditable"> <input type="text" class="form-control" placeholder="Hospital Name"
+							name="phoneno" [(ngModel)]="item.hospitalname"></td>
+					<td *ngIf="item.isEditable"> <input type="text" phoneValidator class="form-control"
+							placeholder="Phone Number" name="phoneno" [(ngModel)]="item.contactnumber"
+							maxlength="10" #phoneno="ngModel">
+						<span *ngIf="phoneno.errors?.default" class="text-danger">{{phoneno.errors?.errorMsg}}</span>
+					</td>
+					<td *ngIf="item.isEditable">
+						<a *ngIf="item.id; else content" [routerLink]="['/department', item.id]">View</a>
+						<ng-template #content>N/A</ng-template>
+					</td>
+					<td *ngIf="item.isEditable" class="pointer">
+						<fa-icon [icon]="saveIcon"  (click)="saveHospitalData(item)" class="pr-1" title="save">
+						</fa-icon>
+						<fa-icon [icon]="cancelIcon" (click)="resetData(item,i)" title="cancel"></fa-icon>
+					</td>
+				</tr>
+
+
+			</tbody>
+
+		</table>
+		<div *ngIf="hospitalListArray.length === 0" class="mb-2">
+			No Data Found
+		</div>
+	</div>
+</div>

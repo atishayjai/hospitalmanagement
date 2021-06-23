@@ -1,0 +1,18 @@
+.wrap-header{
+	text-align: center;
+    font-size: 1.2vw;
+    padding: 15px;
+    background-color: #808080a3;
+    color: white;
+    font-weight: 500;
+    font-family: sans-serif;
+    box-shadow: 0px 3px 3px #80808042;
+}
+.table-responsive{
+	max-height: 300px;
+}
+
+
+input.ng-invalid.ng-touched {
+	border: 1px solid red;
+  }

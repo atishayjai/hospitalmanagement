@@ -1,0 +1,51 @@
+<div class="container ">
+	<div class="wrap-header mt-3 mb-5"> Department List</div>
+
+	<div class="table-responsive">
+		<button type="button" class="btn btn-success float-left mb-2" (click)="sort()">Sort By Department Name</button>
+		<button type="button" class="btn btn-success float-left ml-2 mb-2" (click)="navigate()">Back</button>
+		<button type="button" class="btn btn-success float-right mb-2" (click)="addDepartment()">Add Department</button>
+		<table class="table">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col">Department Name</th>
+					<th scope="col">HOD</th>
+					<th scope="col">Contact No.</th>
+					<th scope="col">Actions</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of DepartmentListArray; let i = index">
+					<td *ngIf="!item.isEditable">{{item?.departmentname}}</td>
+					<td *ngIf="!item.isEditable">{{item?.head}}</td>
+					<td *ngIf="!item.isEditable">{{item?.contactnumber}}</td>
+					<td *ngIf="!item.isEditable" class="pointer">
+						<fa-icon [icon]="editIcon" (click)="item.isEditable = !item.isEditable" class="pr-1"
+							title="edit"></fa-icon>
+						<fa-icon [icon]="removeIcon" (click)="deleteData(item,i)" title="delete"></fa-icon>
+					</td>
+					<td *ngIf="item.isEditable"> <input type="text" class="form-control" placeholder="Department Name"
+							name="department" [(ngModel)]="item.departmentname"></td>
+					<td *ngIf="item.isEditable"> <input type="text" class="form-control" placeholder="hod Name"
+							name="head" [(ngModel)]="item.head"></td>
+					<td *ngIf="item.isEditable"> <input type="text" class="form-control" phoneValidator
+							placeholder="Phone Number" name="phoneno"
+							[(ngModel)]="item.contactnumber" maxlength="10" #phoneno="ngModel">
+						<span *ngIf="phoneno.errors?.default" class="text-danger">{{phoneno.errors?.errorMsg}}</span>
+					</td>
+
+					<td *ngIf="item.isEditable" class="pointer">
+						<fa-icon [icon]="saveIcon" (click)="saveDepartmentData(item)" class="pr-1" title="save">
+						</fa-icon>
+						<fa-icon [icon]="cancelIcon" (click)="resetData(item,i)" title="cancel"></fa-icon>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+		<div *ngIf="DepartmentListArray.length === 0" class="mb-2">
+			No Data Found
+		</div>
+	</div>
+</div>
